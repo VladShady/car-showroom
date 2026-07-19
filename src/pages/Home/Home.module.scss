@@ -1,0 +1,47 @@
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.controls {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+
+    &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.message {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #666;
+    padding: 40px;
+}
+
+
+.error {
+    @extend .message;
+    color: #d32f2f;
+}
+
+

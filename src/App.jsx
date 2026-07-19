@@ -1,15 +1,16 @@
 import {Routes, Route} from 'react-router-dom';
+import {Home} from './pages/Home/Home';
 
 function App() {
   return (
-    <div className="app-container">
-      <header>
-        <h1>Car Showroom</h1>
+    <div style= {{fontFamily: 'sans-serif'}}>
+      <header style={{padding: '20px', backgroundColor: '#222', color: 'white'}}>
+        <h1 style={{margin: 0, textAlign: 'center'}}>Car Showroom</h1>
       </header>
 
       <main>
         <Routes>
-          <Route path="/" element={<div>Main page</div>} />
+          <Route path="/" element={<Home />} />
           <Route path="/vehicles/:id" element={<div>Car page</div>} />
         </Routes>
       </main>
