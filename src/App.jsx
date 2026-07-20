@@ -1,5 +1,6 @@
 import {Routes, Route} from 'react-router-dom';
 import {Home} from './pages/Home/Home';
+import {VehicleDetails} from './pages/VehicleDetails/VehicleDetails';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/vehicles/:id" element={<div>Car page</div>} />
+          <Route path="/vehicles/:id" element={<VehicleDetails />} />
         </Routes>
       </main>
     </div>
