@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import styles from './CommentForm.module.scss';
+import styles from './ReviewForm.module.scss';
 
-export function CommentForm({onAddComment}) {
+export function ReviewForm({onAddReview}) {
     const [name, setName] = useState('');
     const [text, setText] = useState('');
     const [error, setError] = useState('');
@@ -10,23 +10,23 @@ export function CommentForm({onAddComment}) {
         e.preventDefault();
 
         if (!name.trim() || !text.trim()) {
-            setError('Both name and comment are required.');
+            setError('Both name and review are required.');
             return;
         }
 
         if (text.length > 500) {
-            setError('Comment cannot exceed 500 characters.');
+            setError('Review cannot exceed 500 characters.');
             return;
         }
 
-        const newComment = {
+        const newReview = {
             reviewerName: name,
             comment: text,
             date: new Date().toISOString(),
             rating: 5,
         };
 
-        onAddComment(newComment);
+        onAddReview(newReview);
 
         setName('');
         setText('');
@@ -35,7 +35,7 @@ export function CommentForm({onAddComment}) {
 
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-            <h3 className={styles.title}>Add a Comment</h3>
+            <h3 className={styles.title}>Add a Review</h3>
 
             {error && <div className={styles.error}>{error}</div>}
 
@@ -51,7 +51,7 @@ export function CommentForm({onAddComment}) {
             </div>
 
             <div className={styles.field}>
-                <label htmlFor="text">Comment:</label>
+                <label htmlFor="text">Review:</label>
                 <textarea
                     id="text"
                     value={text}

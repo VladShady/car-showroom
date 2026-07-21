@@ -5,14 +5,17 @@
 }
 
 .backLink {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin-bottom: 24px;
-    color: #007bff;
+    color: var(--text-muted);
     text-decoration: none;
     font-weight: 500;
+    transition: color var(--transition), transform var(--transition);
 
     &:hover {
-        text-decoration: underline;
+        color: var(--accent-red);
+        transform: translateX(-4px);
     }
 }
 
@@ -29,10 +32,16 @@
 
 .infoBlock {
     flex: 1;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
+    
+    &:hover {
+        box-shadow: var(--shadow-md);
+    }
 }
 
 .image {
@@ -41,7 +50,8 @@
     display: block;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    background-color: #f5f5f5;
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .details {
@@ -49,33 +59,37 @@
 
     h2 {
         margin: 0 0 8px;
+        color: var(--text-main);
     }
 
     .brand {
-        color: #666;
+        color: var(--text-muted);
         font-size: 0.9rem;
     }
 
     .price {
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: 700;
         margin: 0 0 16px;
-        color: #2c3e50;
+        color: var(--accent-red);
     }
 
     .description {
         line-height: 1.6;
-        color: #444;
+        color: var(--text-main);
         margin-bottom: 24px;
+        opacity: 0.9;
     }
 
     .meta {
         list-style: none;
         padding: 0;
         margin: 0;
-        background: #f9f9f9;
+        background: var(--bg-main);
         padding: 16px;
-        border-radius: 4px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
         
         li {
             margin-bottom: 8px;
@@ -83,51 +97,78 @@
             &:last-child {
                 margin-bottom: 0;
             }
+
+            strong {
+                color: var(--text-muted);
+                font-weight: 600;
+            }
         }
     }
 }
 
-.commentsBlock {
+.reviewsBlock {
     flex: 1;
-    
+
     h3 {
         margin-top: 0;
         margin-bottom: 20px;
+        color: var(--text-main);
     }
 }
 
-.commentsList {
+.reviewsList {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.commentItem {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 16px;
+.reviewItem {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--transition), border-color var(--transition);
 }
 
-.commentHeader {
+.reviewHeader {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: var(--text-main);
 
     .date {
-        color: #888;
+        color: var(--text-muted);
+        font-size: 0.85rem;
     }
 }
 
-.commentText {
+.reviewText {
     margin: 0;
-    line-height: 1.5;
-    color: #333;
+    line-height: 1.6;
+    color: var(--text-main);
+    opacity: 0.9;
 }
 
-.message, .error {
+.noReviews {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.message {
     text-align: center;
     font-size: 1.25rem;
     padding: 40px;
+    color: var(--text-main);
+}
+
+.error {
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 40px;
+    color: var(--accent-red);
+    background-color: var(--accent-red-light);
+    border-radius: var(--radius);
+    margin-top: 24px;
 }

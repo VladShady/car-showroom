@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useParams, Link} from 'react-router-dom';
 import {fetchVehicleById} from '../../api/vehiclesApi';
 import {useLocalStorage} from '../../hooks/useLocalStorage';
-import {CommentForm} from '../../components/CommentForm/CommentForm';
+import {ReviewForm} from '../../components/ReviewForm/ReviewForm';
 import styles from './VehicleDetails.module.scss';
 
 export function VehicleDetails() {
@@ -11,7 +11,7 @@ export function VehicleDetails() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const [localComments, setLocalComments] = useLocalStorage(`comments-${id}`, []);
+    const [localReviews, setLocalReviews] = useLocalStorage(`reviews-${id}`, []);
 
     useEffect(() => {
         const loadVehicle = async () => {
@@ -28,14 +28,14 @@ export function VehicleDetails() {
         loadVehicle();
     }, [id]);
 
-    const handleAddComment = (newComment) => {
-        setLocalComments([...localComments, newComment]);
+    const handleAddReview = (newReview) => {
+        setLocalReviews([...localReviews, newReview]);
     };
 
     if (isLoading) return <div className={styles.message}>Loading...</div>;
     if (error || !vehicle) return <div className={styles.error}>{error}</div>;
 
-    const allComments = [...(vehicle.reviews) || [], ...localComments];
+    const allReviews = [...(vehicle.reviews) || [], ...localReviews];
 
     return (
         <div className={styles.container}>
@@ -45,7 +45,7 @@ export function VehicleDetails() {
                 <div className={styles.infoBlock}>
                     <img src={vehicle.images[0] || vehicle.thumbnail} alt={vehicle.title} className={styles.image} />
                     <div className={styles.details}>
-                        <h2>{vehicle.title} <span className={styles.brand}>({vehicle.brand})</span></h2>
+                        <h2>{vehicle.title}</h2>
                         <p className={styles.price}>${vehicle.price}</p>
                         <p className={styles.description}>{vehicle.description}</p>
 
@@ -57,28 +57,28 @@ export function VehicleDetails() {
                     </div>
                 </div>
 
-                <div className={styles.commentsBlock}>
-                    <h3>Reviews ({allComments.length})</h3>
+                <div className={styles.reviewsBlock}>
+                    <h3>Reviews ({allReviews.length})</h3>
 
-                    <div className={styles.commentsList}>
-                        {allComments.length > 0 ? (
-                            allComments.map((review, index) => (
-                                <div key={index} className={styles.commentItem}>
-                                    <div className={styles.commentHeader}>
+                    <div className={styles.reviewsList}>
+                        {allReviews.length > 0 ? (
+                            allReviews.map((review, index) => (
+                                <div key={index} className={styles.reviewItem}>
+                                    <div className={styles.reviewHeader}>
                                         <strong>{review.reviewerName}</strong>
                                         <span className={styles.date}>
                                             {new Date(review.date).toLocaleDateString()}
                                         </span>
                                     </div>
-                                    <p className={styles.commentText}>{review.comment}</p>
+                                    <p className={styles.reviewText}>{review.comment}</p>
                                     </div>
                             ))
                         ) : (
-                            <p className={styles.noComments}>No reviews yet. Be the first to review!</p>
+                            <p className={styles.noReviews}>No reviews yet. Be the first to review!</p>
                         )}
                     </div>
 
-                    <CommentForm onAddComment={handleAddComment} />
+                    <ReviewForm onAddReview={handleAddReview} />
                 </div>
             </div>
         </div>

@@ -1,0 +1,45 @@
+:root {
+    --bg-main: #f4f6f8;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #6c757d;
+
+    --accent-red: #e63946;      
+    --accent-red-hover: #d62828;
+    --accent-red-light: rgba(230, 57, 70, 0.1);
+
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --radius: 12px;
+    --transition: 0.3s ease;
+}
+
+[data-theme='dark'] {
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --bg-input: #2a2a2a;
+    --text-main: #f8f9fa;
+    --text-muted: #adb5bd;
+
+    --accent-red: #ff4d4d;
+    --accent-red-hover: #ff1a1a;
+    --accent-red-light: rgba(255, 77, 77, 0.15);
+
+    --border-color: #333333;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+* {
+    box-sizing: border-box;
+}
