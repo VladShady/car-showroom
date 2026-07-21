@@ -45,7 +45,7 @@ export function VehicleDetails() {
                 <div className={styles.infoBlock}>
                     <img src={vehicle.images[0] || vehicle.thumbnail} alt={vehicle.title} className={styles.image} />
                     <div className={styles.details}>
-                        <h2>{vehicle.title}</h2>
+                        <h2>{vehicle.brand} {vehicle.title}</h2>
                         <p className={styles.price}>${vehicle.price}</p>
                         <p className={styles.description}>{vehicle.description}</p>
 
