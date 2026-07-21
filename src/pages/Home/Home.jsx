@@ -25,7 +25,7 @@ export function Home() {
     }, []);
 
     const filteredVehicles = vehicles.filter(vehicle =>
-        vehicle.title.toLowerCase().includes(searchQuery.toLowerCase())
+        vehicle.title.toLowerCase().includes(searchQuery.toLowerCase()) || vehicle.brand.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     if(isLoading) return <div className={styles.message}>Loading...</div>
